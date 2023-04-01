@@ -7,9 +7,9 @@
 
 import Foundation
 import Moya
-
 enum ApiMovieService {
     case listMovies
+    case detailMovie(movieId: String)
 }
 
 extension ApiMovieService: TargetType {
@@ -22,25 +22,30 @@ extension ApiMovieService: TargetType {
         switch self {
         case .listMovies:
             return "discover/movie"
+
+        case .detailMovie(let movieId):
+            return "movie/\(movieId)"
+
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .listMovies:
+        case .listMovies, .detailMovie:
             return .get
         }
     }
 
     var sampleData: Data {
         switch self {
-        case .listMovies:
+        case .listMovies,.detailMovie:
             return Data()
+
         }
     }
     var task: Task {
         switch self {
-        case .listMovies:
+        case .listMovies, .detailMovie:
             return .requestParameters(parameters: ["api_key": APIKey.api_key.rawValue], encoding: URLEncoding.queryString)
         }
     }
