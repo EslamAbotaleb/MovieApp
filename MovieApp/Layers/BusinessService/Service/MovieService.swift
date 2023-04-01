@@ -9,7 +9,7 @@ import Foundation
 import Moya
 enum ApiMovieService {
     case listMovies
-    case detailMovie(movieId: String)
+    case detailMovie(movieId: Int)
 }
 
 extension ApiMovieService: TargetType {

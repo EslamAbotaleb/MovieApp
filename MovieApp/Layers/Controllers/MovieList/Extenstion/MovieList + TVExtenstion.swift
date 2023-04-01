@@ -21,6 +21,9 @@ extension MovieListVC: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(self.movieList?.results?[indexPath.row].originalTitle)
+        let vc = MovieDetailsVC()
+        vc.movieId = self.movieList?.results?[indexPath.row].id
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
     }
 }
