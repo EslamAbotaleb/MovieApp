@@ -13,4 +13,5 @@ enum APIKey: String {
 
 enum Urls: String {
     case base_url = "https://api.themoviedb.org/3/"
+    case image_url = "https://image.tmdb.org/t/p/original/"
 }

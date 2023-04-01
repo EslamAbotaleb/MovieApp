@@ -8,12 +8,11 @@
 import Foundation
 import Moya
 
-enum ApiService {
-
+enum ApiMovieService {
     case listMovies
 }
 
-extension ApiService: TargetType {
+extension ApiMovieService: TargetType {
     var baseURL: URL {
         guard let url = URL(string: Urls.base_url.rawValue) else { fatalError() }
         return url
@@ -22,7 +21,7 @@ extension ApiService: TargetType {
     var path: String {
         switch self {
         case .listMovies:
-            return "discover/movie?api_key=\(APIKey.api_key.rawValue)"
+            return "discover/movie"
         }
     }
 
@@ -39,11 +38,10 @@ extension ApiService: TargetType {
             return Data()
         }
     }
-
     var task: Task {
         switch self {
         case .listMovies:
-            return .requestPlain
+            return .requestParameters(parameters: ["api_key": APIKey.api_key.rawValue], encoding: URLEncoding.queryString)
         }
     }
 

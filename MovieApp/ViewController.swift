@@ -11,7 +11,11 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            let movieVC = MovieListVC(nibName: "MovieListVC", bundle: nil)
+            movieVC.modalPresentationStyle = .fullScreen
+            self.present(movieVC, animated: true, completion: nil)
+        }
     }
 
 
