@@ -5,3 +5,4 @@
 2. Use Moya Network.
 3. Architecture Pattern MVVM.
 4. KingFisher Pod.
+5. Helpers for TableView & ImageView.
